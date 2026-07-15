@@ -2,14 +2,10 @@ package com.fsoft.erp.common.aspect;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fsoft.erp.common.annotation.LogAllocation;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -18,11 +14,9 @@ import java.util.Arrays;
 @Slf4j
 @Aspect
 @Component
-@RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AllocationLogAspect {
 
-    ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Around("@annotation(logAllocation)")
     public Object logAllocationOperation(ProceedingJoinPoint joinPoint, LogAllocation logAllocation) throws Throwable {

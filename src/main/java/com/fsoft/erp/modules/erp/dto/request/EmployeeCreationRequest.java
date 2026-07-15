@@ -1,6 +1,7 @@
 package com.fsoft.erp.modules.erp.dto.request;
 
 import com.fsoft.erp.modules.erp.constants.EmployeeConstants;
+import com.fsoft.erp.modules.erp.constants.EmployeeErrorCodeConstants;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,7 +34,7 @@ public class EmployeeCreationRequest {
 
     @NotNull
     @NotBlank
-    @Email
+    @Email(message = EmployeeErrorCodeConstants.EMPLOYEE_EMAIL_INVALID)
     String email;
 
     @Size(max = EmployeeConstants.MAX_ROLE)
